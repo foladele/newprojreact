@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { View, Text} from 'react-native';
 
-const Login = () => {
+const ProfileScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Well msc Screen</Text>
+      <Text>ProfileScreen</Text>
     </View>
   );
 }
 
-export default Login;
+export default ProfileScreen;

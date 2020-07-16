@@ -30,42 +30,44 @@ const styles = StyleSheet.create({
   },
 });
 
-const onLogin =() => {
-  console.log('hello and welcome!')
-  // let email = 'test@test.com';
-  // let username = 'tester1';
-  // console.log(email + " " + username);
+// Re-edits
 
-  // $.ajax({
-  //   url: 'http://127.0.0.1:8000/users/',
-  //   type: 'POST',
-  //   data: { username, email },
-  //   dataType: 'JSON'
-  // }).done( response => {
-  //   console.log('logged in')
-  // }).fail( response => {
-  //   // TODO: Handle this better
-  //   // console.log(response);
-  //   console.log('failed');
-  // })
+// const onLogin =() => {
+//   console.log('hello and welcome!')
+//   // let email = 'test@test.com';
+//   // let username = 'tester1';
+//   // console.log(email + " " + username);
 
-  // fetch('http://127.0.0.1:8000/users/', {
-  //   method: 'POST',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
+//   // $.ajax({
+//   //   url: 'http://127.0.0.1:8000/users/',
+//   //   type: 'POST',
+//   //   data: { username, email },
+//   //   dataType: 'JSON'
+//   // }).done( response => {
+//   //   console.log('logged in')
+//   // }).fail( response => {
+//   //   // TODO: Handle this better
+//   //   // console.log(response);
+//   //   console.log('failed');
+//   // })
+
+//   // fetch('http://127.0.0.1:8000/users/', {
+//   //   method: 'POST',
+//   //   headers: {
+//   //     Accept: 'application/json',
+//   //     'Content-Type': 'application/json'
+//   //   },
     
-  // });
+//   // });
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      username: 'tester2',
-      email: 'test@test1.com'
-    })
-  };
+//   const requestOptions = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       username: 'tester2',
+//       email: 'test@test1.com'
+//     })
+//   };
 
 
   // fetch('http://10.0.2.2:8000/users/', requestOptions)
@@ -81,11 +83,11 @@ const onLogin =() => {
   //       .then(response => response.json())
   //       .then((data) => console.log("data", data));
 
-  fetch('http://10.0.2.2:8000/users/')
-    .then(response => response.json())
-    .then((data) => console.log(data));
+//   fetch('http://10.0.2.2:8000/users/')
+//     .then(response => response.json())
+//     .then((data) => console.log(data));
 
-}
+// }
 
 
 const Home = ({navigation}) => {
@@ -100,30 +102,16 @@ const Home = ({navigation}) => {
   }
 
   return (
-    <View  style={styles.container}>
-      <Text style={styles.inputext}>Login Form</Text>
-      <TextInput
-          value={username}
-           name="username"
-           onChangeText={(text) => handleChange(text, setUsername)}
-           label='Username'      
-           style={styles.input}
-        />
-        <TextInput
-          value={email}
-          name="email"
-          onChangeText={(text) => handleChange(text, setEmail)}
-          label='Email'
-          style={styles.input}
-        />
-      {/* <Button title="Log in"
-      style={styles.input}
-      /> */}
-      <Button title="Sign in"
-      style={styles.input}
-      // onPress={()=> navigation.navigate('Login')}
-      onPress={onLogin}
-      />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+       title="Go to details screen"
+       onPress={()=> navigation.navigate("Details")}
+      ></Button>
+      <Button
+       title="Go to Login"
+       onPress={()=> navigation.navigate("Login")}
+      ></Button>
     </View>
   );
 }

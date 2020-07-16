@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './Home';
 import Login from './Login';
+import Details from './Details';
 
 import {
   SafeAreaView,
@@ -63,13 +64,18 @@ const Footer = () => {
       name="Home" 
       component={HomeScreen} 
       options={{
-        tabBarLabel: 'Login',
+        tabBarLabel: 'Home',
         tabBarColor: '#009387',
       }}
       />
       <Tab.Screen name="Login" component={Login} 
       options={{
-        tabBarLabel: 'Home',
+        tabBarLabel: 'Login',
+        tabBarColor: '#009387',
+      }}/>
+    <Tab.Screen name="Details" component={Details} 
+      options={{
+        tabBarLabel: 'Details',
         tabBarColor: '#009387',
       }}/>
     </Tab.Navigator>
