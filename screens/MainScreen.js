@@ -8,20 +8,29 @@ import * as Animatable from 'react-native-animatable';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Drawer, Avatar, Title, Caption, Paragraph, TouchableRipple, Switch } from 'react-native-paper';
+import { Drawer, Avatar, Title, Caption, Paragraph, TouchableRipple, Switch, Card } from 'react-native-paper';
 
 import { AuthContext } from '../Component/Context';
+// import { LoginContext } from '../Component/LoginContext';
+
 
 const Tab = createBottomTabNavigator();
 
 const MainScreen = ({navigation}) => {
 
+  const [modalOpen, setModalOpen] = React.useState(true);
+  const [isDisplayBalance, setIsDisplayBalance] = React.useState(false);
+
+  const loginAuth = React.useMemo(() => ({
+    signIn: async(isLogin) => {
+      console.log('sign in function: ', isLogin)
+      setModalOpen(isLogin)
+    }
+  }));
+
   const {signUp } = React.useContext(AuthContext);
 
   // console.log("main screen: ");
-
-  const [modalOpen, setModalOpen] = React.useState(true);
-  const [isDisplayBalance, setIsDisplayBalance] = React.useState(false);
 
   const closeModal = (nav) => {
     // console.log(val);
@@ -36,59 +45,74 @@ const MainScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-         <Text style={{ fontSize: 45, marginTop: 50}}>$0.00</Text>
-         <Text style={{marginBottom:15}}>Wallet Balance</Text>
-         <View>
-          <TouchableRipple onPress={() => {toggleShowBalance()}}>
-            <View style={styles.preference}> 
-               <View pointerEvents="none" style={{color: '#d81e5b'}}>
-                  <Switch value={isDisplayBalance}/>
-               </View>
-               <Text style={{paddingLeft: 10}}>Always display balance on home page</Text>
-            </View>
-          </TouchableRipple>
-         </View>
-       
-        </View> 
-        <View style={styles.footer}>
-          <View style={[styles.text_footer, {
-            color: '#707070'
-          }]}>
-            <Text>You can pay bills for goods and services or send</Text> 
-            <Text>money to friends and family with the amount in</Text>
-            <Text>your wallet. You can also withdraw the money</Text>
-            <Text>to your bank account</Text>
+        <View style={{backgroundColor: '#3980be'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'center', margin: 15 }}>
+            <TouchableOpacity>
+              <Text style={{color: '#fff', fontSize: 16}}>My Account</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text style={{ marginLeft: 50, color: '#fff', fontSize: 16}}>Promotions</Text>
+            </TouchableOpacity>
           </View>
+        </View>
+        <View style={[styles.header]}>
+          <Text style={{fontSize: 25, fontWeight: 'bold'}}>Hello John!</Text>
+        </View>
 
-         <View style={styles.button}>
-            <TouchableOpacity
-                style={styles.signIn}
-                // onPress={() =>  navigation.navigate('RegisterScreen')}
-            >
-                <LinearGradient
-                colors={['#3980be', '#3980be']}
-                style={styles.signIn}
-                >
-                <Text style={[styles.textSign, {
-                    color: '#fff'
-                    }]}>ADD MONEY</Text>
-                </LinearGradient>
+        <View style={styles.footer}>
+          <View style={{}}>
+            <TouchableOpacity>
+              <Card >
+                  <Card.Content>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Paragraph style={{padding: 10, fontSize: 15, fontWeight: 'bold'}}>My Wallet Balance</Paragraph>
+                      <TouchableOpacity
+                      onPress={() => {navigation.navigate('WalletStackScreen')}}>
+                        <FontAwesome 
+                          name="arrow-right"
+                          color="#e57373"
+                          size={20}
+                          style={{padding: 10, paddingLeft: 160, justifyContent:"flex-end", alignItems:'flex-end'}}
+                        />
+                      </TouchableOpacity> 
+                    </View>
+                    <Paragraph style={{padding: 10, fontSize: 20, fontWeight: 'bold'}}>$ 0.00</Paragraph>
+                  </Card.Content>
+              </Card>
             </TouchableOpacity>
-
-            <TouchableOpacity
-                // onPress={() =>  navigation.navigate('LoginScreen')}
-                style={[styles.signIn, {
-                borderColor: '#3980be',
-                borderWidth: 1,
-                marginTop: 15
-                }]}
-            >
-                <Text style={[styles.textSign, {
-                color:'#3980be',
-                }]}>WITHDRAW MONEY</Text>
-            </TouchableOpacity>
-         </View>
+            
+            <Card style={{marginTop: 30}}>
+                <Card.Content style={{ flexDirection: 'row', justifyContent: 'center'}}>
+                  <TouchableOpacity>
+                    <FontAwesome name="google-wallet" 
+                      color="#3980be" size={60} 
+                      style={{padding: 10, alignItems: 'center', alignContent: 'center'}} 
+                      Title='Add Money'/>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity>
+                    <FontAwesome 
+                      name="paper-plane" 
+                      color="#3980be" size={60}
+                      style={{paddingLeft: 50, paddingRight: 50}}/>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity>
+                    <FontAwesome 
+                      name="usd" 
+                      color="#3980be" 
+                      size={60} 
+                      style={{padding: 10}}/>
+                  </TouchableOpacity>
+                  
+                </Card.Content>
+                <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+                  <Text style={{padding: 10}} >Add Money</Text>
+                  <Text style={{padding: 10}} >Send Money</Text>
+                  <Text style={{padding: 10}} >Pay Bills</Text>
+                </View>
+            </Card>
+          </View>
         </View>
 
         {/* modal code */}
@@ -150,23 +174,15 @@ const height_modal = height * 0.3;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: '#fff'
+    // backgroundColor: '#fff'
   },
   header: {
-      flex: 1,
-      top: 20,
-      marginTop: 50,
-      marginBottom: 50,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
+      top: 0,
+      marginTop: 20,
       paddingHorizontal: 20,
-      paddingBottom: 10
   },
   footer: {
       flex: 3,
-      backgroundColor: '#fff',
-    //   borderTopLeftRadius: 30,
-    //   borderTopRightRadius: 30,
       paddingHorizontal: 20,
       paddingVertical: 30
   },
@@ -256,3 +272,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+

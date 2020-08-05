@@ -128,12 +128,11 @@ const App = () => {
       }
       dispatch({type: 'LOGOUT'});
     },
-    signUp: (val) => {
-      console.log('sign up: ', val);
+    signUp: () => {
       // setUserToken('yhsjs');
       // setIsLoading(false)
     },
-  }), [])
+  }), []);
 
   // React hook
   useEffect(()=>{

@@ -1,12 +1,19 @@
 import React from 'react';
-import { Alert, View, Text, Button, Modal, StyleSheet, Dimensions, Image, TouchableOpacity, Platform, TextInput, StatusBar } from 'react-native';
+import { Alert, View, 
+  Text, Button, Modal, 
+  StyleSheet, Dimensions, 
+  Image, TouchableOpacity, 
+  Platform,
+  StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import * as Animatable from 'react-native-animatable';
+import { TextInput } from 'react-native-paper';
 
 import { AuthContext } from '../Component/Context';
+import { color } from 'react-native-reanimated';
 
 const RegisterScreen = ({navigation}) => {
 
@@ -84,15 +91,16 @@ const RegisterScreen = ({navigation}) => {
           animation="fadeInUpBig"
           style={styles.footer}
         >
-          <Text style={styles.text_footer}>Username (optional)</Text>
+          {/* <Text style={styles.text_footer}>Username (optional)</Text> */}
           <View style={styles.action}>
-            <FontAwesome 
+            {/* <FontAwesome 
               name="user-o"
               color="#05375a"
-              size={20}
-            />
+              size={15}
+            /> */}
             <TextInput
-              placeholder="Your Username"
+              label="Username (optional)"
+              // placeholder="Username (optional)"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val)=> textInputChange(val)}
@@ -110,17 +118,18 @@ const RegisterScreen = ({navigation}) => {
             : null}
           </View>
 
-          <Text style={[styles.text_footer, {
+          {/* <Text style={[styles.text_footer, {
             marginTop:10
-          }]}>Email Address</Text>
+          }]}>Full Name</Text> */}
           <View style={styles.action}>
-            <FontAwesome 
+            {/* <FontAwesome 
               name="user-o"
               color="#05375a"
               size={20}
-            />
+            /> */}
             <TextInput
-              placeholder="Full Name"
+              label="Full Name"
+              // placeholder="Full Name"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val)=> textInputChange(val)}
@@ -138,17 +147,21 @@ const RegisterScreen = ({navigation}) => {
             : null}
           </View>
         
-          <Text style={[styles.text_footer, {
-            marginTop:10
-          }]}>Phone Number</Text>
+          {/* <Text style={[styles.text_footer, {
+            marginTop: 10,
+            color: 'black',
+            fontWeight: 'bold'
+          }]}>Phone Number</Text> */}
           <View style={styles.action}>
-            <FontAwesome 
+            {/* <FontAwesome 
               name="phone"
               color="#05375a"
               size={20}
-            />
+            /> */}
             <TextInput
-              placeholder="Your Phone"
+              label='Phone Number'
+              // placeholder="Phone Number"
+              color='red'
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val)=> textInputChange(val)}
@@ -166,17 +179,18 @@ const RegisterScreen = ({navigation}) => {
             : null}
           </View>
 
-          <Text style={[styles.text_footer, {
+          {/* <Text style={[styles.text_footer, {
             marginTop:10
-          }]}>Email Address</Text>
+          }]}>Email Address</Text> */}
           <View style={styles.action}>
-            <FontAwesome 
+            {/* <FontAwesome 
               name="envelope-o"
               color="#05375a"
               size={20}
-            />
+            /> */}
             <TextInput
-              placeholder="Your Email"
+              label='Your Email'
+              // placeholder="Your Email"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val)=> textInputChange(val)}
@@ -194,17 +208,18 @@ const RegisterScreen = ({navigation}) => {
             : null}
           </View>
 
-          <Text style={[styles.text_footer, {
+          {/* <Text style={[styles.text_footer, {
             marginTop:10
-          }]}>Password</Text>
+          }]}>Password</Text> */}
           <View style={styles.action}>
-            <Feather 
+            {/* <Feather 
               name="lock"
               color="#05375a"
               size={20}
-            />
+            /> */}
             <TextInput
-              placeholder="Your Password"
+              label='Your Password'
+              // placeholder="Your Password"
               secureTextEntry={data.secureTextEntry ? true : false}
               style={styles.textInput}
               autoCapitalize="none"
@@ -229,17 +244,18 @@ const RegisterScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
 
-          <Text style={[styles.text_footer, {
+          {/* <Text style={[styles.text_footer, {
             marginTop:10
-          }]}>Confirm Password</Text>
+          }]}>Confirm Password</Text> */}
           <View style={styles.action}>
-            <Feather 
+            {/* <Feather 
               name="lock"
               color="#05375a"
               size={20}
-            />
+            /> */}
             <TextInput
-              placeholder="Confirm Password"
+              label='Confirm Password'
+              // placeholder="Confirm Password"
               secureTextEntry={data.confirm_secureTextEntry ? true : false}
               style={styles.textInput}
               autoCapitalize="none"
@@ -334,10 +350,11 @@ const styles = StyleSheet.create({
       fontSize: 14
   },
   action: {
+      backgroundColor: '#fff',
       flexDirection: 'row',
       marginTop: 2,
       borderBottomWidth: 1,
-      borderBottomColor: '#f2f2f2',
+      borderBottomColor: '#3980be',
       paddingBottom: 0
   },
   actionError: {
@@ -351,7 +368,8 @@ const styles = StyleSheet.create({
       flex: 1,
       marginTop: Platform.OS === 'andriod' ? 0 : -12,
       paddingLeft: 10,
-      color: '#05375a',
+      color: 'black',
+      fontWeight: 'bold'
   },
   errorMsg: {
       color: '#FF0000',

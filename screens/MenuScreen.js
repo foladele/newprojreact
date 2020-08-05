@@ -14,6 +14,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import HomeScreen from './MainScreen';
 import WalletScreen from './WalletScreen';
@@ -40,7 +41,7 @@ const MenuScreen =() => (
           tabBarLabel: 'Home',
           tabBarColor: '#3980be',
           tabBarIcon: ({ color }) => (
-            <Icon name="ios-home" color={color} size={26} />
+            <MaterialIcons name="home" color={color} size={26} />
           ),
         }}
         />
@@ -50,7 +51,7 @@ const MenuScreen =() => (
           tabBarLabel: 'My Wallet',
           tabBarColor: '#1f65ff',
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="google-wallet" color={color} size={20}/>
+            <MaterialIcons name="account-balance-wallet" color={color} size={26} />
           ),
         }}/>
 
@@ -60,7 +61,7 @@ const MenuScreen =() => (
           tabBarLabel: 'Send',
           tabBarColor: '#694fad',
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="paper-plane" color={color} size={20}/>
+            <MaterialIcons name="send" color={color} size={26} />
           ),
         }}/>
         <Tab.Screen name="Pay" 
@@ -69,7 +70,7 @@ const MenuScreen =() => (
           tabBarLabel: 'Pay',
           tabBarColor: '#d02860',
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="usd" color={color} size={20}/>
+            <MaterialIcons name="attach-money" color={color} size={26} />
           ),
         }}/>
         <Tab.Screen name="More" 
@@ -78,7 +79,7 @@ const MenuScreen =() => (
           tabBarLabel: 'More',
           tabBarColor: '#d02860',
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="bars" color={color} size={20}/>
+            <MaterialIcons name="menu" color={color} size={26} />
           ),
         }}/>
     </Tab.Navigator>

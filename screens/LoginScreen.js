@@ -7,6 +7,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import * as Animatable from 'react-native-animatable';
 
 import { AuthContext } from '../Component/Context';
+import LoginContext from '../Component/LoginContext';
+
 
 const LoginScreen = ({navigation}) => {
 
@@ -20,11 +22,10 @@ const LoginScreen = ({navigation}) => {
 
   });
 
+  // const { signUp } = React.useContext(LoginContext);
   // asses signin from app,js
   const {signIn } = React.useContext(AuthContext);
 
-   // asses signUp from app,js set it to false
-   const {signUp } = React.useContext(AuthContext);
 
   const textInputChange = (val) => {
     // console.log(val);
@@ -78,7 +79,6 @@ const LoginScreen = ({navigation}) => {
 
   const handleLogin = (nav) => {
     // console.log(val);
-    signUp(false);
     navigation.navigate(nav);
    
   }
